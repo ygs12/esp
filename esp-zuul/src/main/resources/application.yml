@@ -1,0 +1,28 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    zookeeper:
+      connect-string: 192.168.3.200
+management:
+  server:
+    port: 8666
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+zuul:
+  routes:
+    user:
+      path: /user-api/**
+      serviceId: esp-user
+    house:
+      path: /house-api/**
+      serviceId: esp-house
+    comment:
+      path: /comment-api/**
+      serviceId: esp-comment
+  ignored-services: "*"
+  sensitive-headers:

@@ -1,0 +1,53 @@
+# 禁用默认错误处理页面
+server:
+  error:
+    whitelabel:
+      enabled: false
+# 配置druid数据库连接池
+spring:
+  druid:
+    borrowConnectionTimeout: 30000
+    maxActive: 20
+    maxWait: 10000
+    minEvictableIdleTimeMillis: 300000
+    minIdle: 3
+    password: 123
+    timeBetweenEvictionRunsMillis: 60000
+    url: jdbc:mysql://127.0.0.1:3306/user?useSSL=true
+    username: root
+    validationQuery: SELECT 'x' # 解决mysql8小时问题
+  redis:
+    password: redis-01
+    host: 192.168.3.200
+  mail:
+    host: smtp.163.com # 若使用QQ邮箱发送邮件，则需要修改为spring.mail.host=smtp.qq.com，同时spring.mail.password改为QQ邮箱的授权码。
+    password: gerry2018abc # 授权码
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    username: inet_ygssoftware@163.com
+  cloud:
+    zookeeper:
+      connect-string: 192.168.3.200:2181
+  application:
+    name: esp-user
+mapper:
+  not-empty: true
+  identity: MYSQL
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*Mapper.xml
+logging:
+  level:
+    com.ruanmou.house.server.user.mapper: debug
+
+# 配置qiniu cloud
+qiniu.accessKey: d29dJcOrUmHIa902G93jGB8vuvAd-Pv_eGtik8sj
+qiniu.secretKey: fNzUoBiUuNZ0ZdRWFj0_YNSwDowr093g6XurPGtJ
+qiniu.bucket: gerry
+qiniu.cdn.prefix: http://piftf6kmg.bkt.clouddn.com/

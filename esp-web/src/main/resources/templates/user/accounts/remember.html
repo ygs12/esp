@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http:/www.thymeleaf.org">
+<head th:replace="common/common::commonHeader"></head>
+
+<body class="page-sub-page page-create-account page-account" id="page-top">
+<!-- Wrapper -->
+<div class="wrapper">
+    <!-- Navigation -->
+    <div th:replace="common/common::nav"></div>
+    <!-- end Navigation -->
+    <!-- Page Content -->
+    <div id="page-content">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">创建账号</li>
+            </ol>
+        </div>
+        <!-- end Breadcrumb -->
+
+        <div class="container">
+            <div class="row">
+                <!-- About Us -->
+                <div class="col-md-12 col-sm-12">
+                    <section id="about-us">
+                        <header><h1>重置密码</h1></header>
+                        <section id="ceo-section" class="center">
+                           
+                            <div class="cite no-bottom-margin">已经向邮箱<span th:text="${email}"></span>发送重置密码确认邮件
+                            </div>
+                        </section>
+                    </section>
+                </div>
+            </div>
+           
+        </div><!-- /.container -->
+    </div>
+    <!-- end Page Content -->
+    <!-- Page Footer -->
+    <footer th:replace="common/common::footer"></footer>
+    <!-- end Page Footer -->
+</div>
+
+<span th:replace="common/common::commonJs"></span>
+<!--[if gt IE 8]>
+<script type="text/javascript" src="/assets/js/ie.js"></script>
+<![endif]-->
+<script th:inline="javascript" >
+    $(document).ready(function() {
+        var errorMsg   = "[(${errorMsg})]";
+        var successMsg = "[(${successMsg})]";
+        if(errorMsg){
+            errormsg("error",errorMsg);
+        }
+        if(successMsg) {
+            successmsg("success",successMsg);
+        }
+    })
+        
+ </script>
+</body>
+</html>
